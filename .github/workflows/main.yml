@@ -1,0 +1,17 @@
+name: Call Reusable Workflow
+
+on: push
+
+jobs:
+  call-reusable-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Call reusable workflow
+        uses: source-repo-owner/source-repo-name/.github/workflows/reusable-workflow.yml@main
+        with:
+          username: ${{ secrets.USERNAME }}
+          token: ${{ secrets.TOKEN }}
+          secrets: inherit
